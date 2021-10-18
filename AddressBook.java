@@ -45,6 +45,29 @@ public class AddressBook {
 
 	}
 
+	public void delete(String name) {
+		for (int i = 0; i < 10; i++) {
+			boolean result = (Arrays.asList(Firstname).contains(name));
+			if (result == true) {
+				Firstname[i] = null;
+				Lastname[i] = null;
+				Address[i] = null;
+				phoneNumber[i] = null;
+
+				LOG.info("" + i);
+
+			}
+		} // boolean contains = Arrays.stream(Firstname).anyMatch("name"::equals);
+			// for(int i=0;i<10;i++)
+			// {
+
+		// }
+		LOG.info("Firstname" + Arrays.toString(Firstname));
+		LOG.info("Firstname" + Arrays.toString(Lastname));
+		LOG.info("Firstname" + Arrays.toString(Address));
+		LOG.info("Firstname" + Arrays.toString(phoneNumber));
+
+	}
 }
 
 class Contactdetails extends AddressBook {
@@ -57,7 +80,7 @@ class Contactdetails extends AddressBook {
 		Scanner value = new Scanner(System.in);
 
 		Contactdetails contact = new Contactdetails();
-		LOG.info("Pres 1 fo ADD, press 2 for REPLACE and press 3 for DELETE");
+		LOG.info("Press 1 fr ADD, press 2 for REPLACE, press 3 for DELETE");
 
 		// LOG.info("1.ADD 2.REPLACE 3.DELETE");
 		// 1LOG.info("enter Your Choice");
@@ -86,7 +109,7 @@ class Contactdetails extends AddressBook {
 					int time = i;
 					contact.getValue(phonenumber, address, firstname, lastname, length, time);
 				}
-
+				// contact.getValue(phonenumber,address,firstname,lastname);
 				break;
 			case 2:
 				Scanner sc = new Scanner(System.in);
@@ -101,8 +124,21 @@ class Contactdetails extends AddressBook {
 
 				break;
 
+			case 3:
+				Scanner cvb = new Scanner(System.in);
+				LOG.info("Enter the name you want to rename");
+				name = cvb.nextLine();
+
+				contact.delete(name);
+
+				break;
+
+			default:
+				// empHr = 0;
+				break;
+
 			}
-			LOG.info("Do you want to continue then press 1 for yes and press 2 for No");
+			LOG.info("Do you want to continue then press  1 for yes and  2 for No");
 			choice = value.nextInt();
 		} while (choice == 1);
 
